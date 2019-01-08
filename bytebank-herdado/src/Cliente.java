@@ -1,20 +1,20 @@
 
-public class Cliente implements Autenticavel{
+public class Cliente implements Autenticavel {
 
-	private int senha;
+	private AutenticacaoUtil autenticador;
 
-    @Override
-    public void setSenha(int senha){
-        this.senha = senha;
-    }
+	public Cliente() {
+		this.autenticador = new AutenticacaoUtil();
+	}
 
-    @Override
-    public boolean autentica(int senha){
+	@Override
+	public void setSenha(int senha) {
+		this.autenticador.setSenha(senha);
+	}
 
-        if(this.senha == senha){
-            return true;
-        } else {
-            return false;
-        }
-    }
+	@Override
+	public boolean autentica(int senha) {
+
+		return this.autenticador.autentica(senha);
+	}
 }
